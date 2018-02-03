@@ -3,12 +3,16 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
+import VueHead from 'vue-head'
+import { sync } from 'vuex-router-sync'
 
 import App from './App'
 import router from './router'
 import store from './store'
 
+sync(store, router)
 Vue.use(Vuetify)
+Vue.use(VueHead)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
