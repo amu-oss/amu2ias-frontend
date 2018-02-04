@@ -2,12 +2,12 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <img src="/static/img/v.png" alt="Vuetify.js" class="mb-5">
+        <img src="/static/img/ghost.png" alt="Vuetify.js" class="mb-5">
         <blockquote>
-          &#8220;First, solve the problem. Then, write the code.&#8221;
+          &#8220;This is the basic scaffolding of the site&#8221;
           <footer>
             <small>
-              <em>&mdash;John Johnson</em>
+              <em>&mdash;Thanks to Areeb Jamal</em>
             </small>
           </footer>
         </blockquote>
