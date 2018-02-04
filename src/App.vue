@@ -6,25 +6,28 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
-      :drawer="!drawer"
       dark
       app
     >
+      <v-toolbar flat>
       <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon light v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
+        <v-list-tile>
+          <v-list-tile-title class="title">
+            Menu
+          </v-list-tile-title>
         </v-list-tile>
       </v-list>
+    </v-toolbar>
+    <v-divider></v-divider>
+    <v-list dense class="pt-0">
+      <v-list-tile v-for="item in items" :key="item.title" @click="" router v-bind:to="item.action" >
+          <v-icon>{{ item.icon }}</v-icon> 
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title> &nbsp; {{ item.title }}</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
     </v-navigation-drawer>
 
     <v-toolbar fixed app :clipped-left="clipped">
@@ -51,15 +54,18 @@
     data () {
       return {
         clipped: false,
-        drawer: true,
+        drawer: false,
         fixed: false,
         items: [
-        { icon: 'bubble_chart', title: 'Inspire' },
-        { icon: 'bubble_chart', title: 'Chat' }
+        { icon: 'dashboard', title: 'Home', action: '/' },
+        { icon: 'grade', title: 'Hall of Fame', action: 'fame' },
+        { icon: 'rss_feed', title: 'Blog', action: 'blog' },
+        { icon: 'file_download', title: 'Downloads', action: 'downloads' },
+        { icon: 'chat', title: 'Chat', action: 'chat' },
+        { icon: 'account_circle', title: 'Account', action: 'account' },
+        { icon: 'info', title: 'About', action: 'about' }
         ],
         miniVariant: false,
-        right: true,
-        rightDrawer: false,
         title: 'Amu2Ias'
       }
     }
