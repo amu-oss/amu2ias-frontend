@@ -42,7 +42,7 @@
     </v-content>
     
     <v-footer :fixed="fixed" app>
-      <span>&copy; AMU-OSS</span>
+      <span>&copy; Apache License</span>
     </v-footer>
 
   </v-app>
