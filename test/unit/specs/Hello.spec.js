@@ -9,6 +9,6 @@ describe('Hello.vue', () => {
     const Constructor = Vue.extend(Hello)
     const vm = new Constructor().$mount()
     expect(vm.$el.querySelector('blockquote').textContent)
-      .to.contain('First, solve the problem')
+      .to.contain('This is the basic scaffolding of the site')
   })
 })
