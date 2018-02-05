@@ -75,3 +75,14 @@ git remote add upstream https://github.com/amu-oss/amu2ias
    git checkout master
    ```   
 
+### Repository Structure
+- `src` folder is where most of the developmet takes place.
+- In the `router` folder, the `index.js` file contains all the details of the routes of pages.
+- The App.vue file contains the basic layout of the site which is common to all the pages. It includes navigation-drawer, tool-bar, etc.
+- The component folder contains \*.vue files for all the pages. The respective vue file of the page is rendered when the page opens.
+- If you wish to make changes in the basic layout of the site. Work on `App.vue` file
+- If you wish to make changes in a particular page. Work on the .vue file of the page.
+- To create a new page:
+   - Makes its `vue` file in the `components` folder.
+   - Add its route in the `router/index.js` file.
+   - Add its link in the navigation drawer by adding the page details in `items` list in `App.vue` file.
