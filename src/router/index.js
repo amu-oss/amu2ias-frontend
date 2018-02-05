@@ -47,6 +47,11 @@ export default new Router({
       path: '/downloads',
       name: 'Downloads',
       component: Downloads
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: Hello
     }
   ]
 })

@@ -6,7 +6,7 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
-      dark
+      light
       app
     >
       <v-toolbar flat>
@@ -57,7 +57,7 @@
         drawer: false,
         fixed: false,
         items: [
-        { icon: 'dashboard', title: 'Home', action: '/' },
+        { icon: 'dashboard', title: 'Home', action: 'home' },
         { icon: 'grade', title: 'Hall of Fame', action: 'fame' },
         { icon: 'rss_feed', title: 'Blog', action: 'blog' },
         { icon: 'file_download', title: 'Downloads', action: 'downloads' },
