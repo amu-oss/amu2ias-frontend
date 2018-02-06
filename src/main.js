@@ -10,10 +10,14 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import urls from './urls'
+
 sync(store, router)
 Vue.use(Vuetify)
 Vue.use(VueHead)
 Vue.config.productionTip = false
+
+Vue.prototype.$urls = urls
 
 /* eslint-disable no-new */
 new Vue({
