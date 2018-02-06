@@ -33,8 +33,7 @@
     <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      
+      <v-spacer></v-spacer>      
     </v-toolbar>
 
     <v-content>
@@ -66,7 +65,8 @@
         { icon: 'info', title: 'About', action: 'about' }
         ],
         miniVariant: false,
-        title: 'Amu2Ias'
+        title: 'Amu2Ias',
+        logo_url: this.$logoURL
       }
     }
   }

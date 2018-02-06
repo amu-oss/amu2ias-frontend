@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-slide-y-transition mode="out-in">
       <v-layout column align-center>
-        <img src="/static/img/logo.png" alt="Vuetify.js" class="mb-5">
+        <img :src="logo_url" alt="Vuetify.js" class="mb-5">
         <blockquote>
           &#8220;This is the downloads page &#8221;
           <footer>
@@ -15,3 +15,15 @@
     </v-slide-y-transition>
   </v-container>
 </template>
+
+<script>
+
+export default {
+  data () {
+    return {
+      logo_url: this.$logoURL
+    }
+  }
+}
+
+</script>
