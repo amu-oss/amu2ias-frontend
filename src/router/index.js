@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Home from '@/components/Home'
 import Chat from '@/components/Chat'
 import About from '@/components/About'
 import Fame from '@/components/Fame'
@@ -15,8 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Home',
+      component: Home
     },
     {
       path: '/chat',
@@ -30,7 +30,7 @@ export default new Router({
     },
     {
       path: '/fame',
-      name: 'Fame',
+      name: 'Hall of Fame',
       component: Fame
     },
     {
@@ -51,7 +51,7 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
-      component: Hello
+      component: Home
     }
   ]
 })

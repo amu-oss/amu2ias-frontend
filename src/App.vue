@@ -20,9 +20,8 @@
     </v-toolbar>
     <v-divider></v-divider>
     <v-list dense class="pt-0">
-      <v-list-tile v-for="item in items" :key="item.title" @click="" router v-bind:to="item.action" >
-          <v-icon>{{ item.icon }}</v-icon> 
-        </v-list-tile-action>
+      <v-list-tile v-for="item in items" :key="item.title" router v-bind:to="item.action">
+          <v-icon>{{ item.icon }}</v-icon>
         <v-list-tile-content>
           <v-list-tile-title> &nbsp; {{ item.title }}</v-list-tile-title>
         </v-list-tile-content>
@@ -64,9 +63,12 @@
         { icon: 'account_circle', title: 'Account', action: 'account' },
         { icon: 'info', title: 'About', action: 'about' }
         ],
-        miniVariant: false,
-        title: 'Amu2Ias',
-        logo_url: this.$logoURL
+        miniVariant: false
+      }
+    },
+    computed: {
+      title () {
+        return this.$route.name
       }
     }
   }
