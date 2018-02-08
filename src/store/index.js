@@ -10,18 +10,18 @@ export const store = new Vuex.Store({
     auth: auth
   },
   state: {
-    // Add auth related state
+    // Add global properties
   },
 
   getters: {
-    // Add auth related getters
+    // Add global getters
   },
 
   actions: {
-    // Add auth related actions
+    // Add global actions
   },
 
   mutations: {
-    // Add auth related mutations
+    // Add global mutations
   }
 })
