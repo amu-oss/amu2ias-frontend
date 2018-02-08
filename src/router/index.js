@@ -7,6 +7,7 @@ import Fame from '@/components/Fame'
 import Account from '@/components/Account'
 import Blog from '@/components/Blog'
 import Downloads from '@/components/Downloads'
+import Signin from '@/components/Signin'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/signin',
+      name: 'Sign In',
+      component: Signin
     }
   ]
 })
