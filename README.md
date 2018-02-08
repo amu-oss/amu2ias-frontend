@@ -1,5 +1,7 @@
 # amu2ias
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/amu-oss/amu2ias-frontend.svg)](https://greenkeeper.io/)
+
 > Vue.js Frontend for AMU2IAS
 
 ## Build Setup
