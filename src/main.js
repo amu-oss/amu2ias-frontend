@@ -10,10 +10,8 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 import urls from './urls'
-import { config } from './config'
 
 import * as firebase from 'firebase'
-import firebaseui from 'firebaseui'
 
 sync(store, router)
 Vue.use(Vuetify)
@@ -21,9 +19,7 @@ Vue.use(VueHead)
 Vue.config.productionTip = false
 
 Vue.prototype.$urls = urls
-Vue.prototype.$firebase = firebase.initializeApp(config.firebase)
-Vue.prototype.$auth = firebase.auth()
-Vue.prototype.$authUI = new firebaseui.auth.AuthUI(Vue.prototype.$auth)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

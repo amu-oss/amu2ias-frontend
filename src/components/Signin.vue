@@ -23,6 +23,11 @@
 
 <script>
   import firebase from 'firebase'
+  import firebaseui from 'firebaseui'
+  import { config } from '../config'
+
+  firebase.initializeApp(config.firebase)
+
   export default {
     name: 'auth',
     computed: {
@@ -36,6 +41,7 @@
       }
     },
     mounted () {
+      var authUI = new firebaseui.auth.AuthUI(firebase.auth())
       var uiConfig = {
         signInSuccessUrl: '/',
         signInOptions: [
@@ -46,7 +52,7 @@
           firebase.auth.EmailAuthProvider.PROVIDER_ID
         ]
       }
-      this.$authUI.start('#firebaseui-auth-container', uiConfig)
+      authUI.start('#firebaseui-auth-container', uiConfig)
     }
   }
 </script>
