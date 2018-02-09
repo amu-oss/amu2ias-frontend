@@ -5,13 +5,11 @@ export default{
   namespaced: true,
   state: {
     // Add auth related state
-    user: null,
-    isAdmin: false
+    user: null
   },
 
   getters: {
     // Add auth related getters
-    user: state => state.user
   },
 
   actions: {
