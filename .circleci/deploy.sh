@@ -8,7 +8,5 @@ if [ ! -z "$CIRCLE_PR_USERNAME" -o "$CIRCLE_PROJECT_USERNAME" != "amu-oss" -o "$
     exit 0
 fi
 
-yarn add surge
-
 export SURGE_LOGIN=amu-oss@gmail.com
-./node_modules/.bin/surge --project ./dist --domain amu2ias.surge.sh
+surge --project ./dist --domain amu2ias.surge.sh

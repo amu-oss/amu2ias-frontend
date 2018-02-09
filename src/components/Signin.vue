@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row v-if="user">
       <v-flex xs12 sm8 lg6 xl4 offset-sm2 offset-lg3 offset-xl4 class="text-xs-center">
-        <v-card color="indigo" dark>>
+        <v-card color="indigo" dark>
             <div class="display-1 text-xs-center pt-3">You are already logged in!</div>
             <v-btn error large @click="logout" class="ma-3">Logout</v-btn>
           </v-card>
@@ -23,10 +23,13 @@
 
 <script>
   import firebase from 'firebase'
-  import Vuex from 'vuex'
   export default {
     name: 'auth',
-    computed: Vuex.mapState(['user']),
+    computed: {
+      user () {
+        return this.$store.state.auth.user
+      }
+    },
     methods: {
       logout () {
         this.$store.auth.dispatch('logout')
