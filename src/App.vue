@@ -32,7 +32,17 @@
     <v-toolbar fixed app :clipped-left="clipped">
       <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>      
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-xs-only">
+        <v-btn flat v-if="!user" :key="'signin'" :to="'/signin'">
+          <v-icon left>lock</v-icon>
+          Sign In
+        </v-btn>
+        <v-btn flat v-if="user" :key="'signin'" @click="logout">
+          <v-icon left>lock_open</v-icon>
+          Log Out
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
@@ -67,9 +77,19 @@
       }
     },
     computed: {
+      user () {
+        return this.$store.state.auth.user
+      },
       title () {
         return this.$route.name
       }
+    },
+
+    methods: {
+      logout () {
+        this.$store.dispatch('auth/logout')
+      }
     }
+
   }
 </script>
