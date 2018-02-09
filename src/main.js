@@ -10,6 +10,7 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 import urls from './urls'
+import { config } from './config'
 
 import * as firebase from 'firebase'
 
@@ -19,6 +20,7 @@ Vue.use(VueHead)
 Vue.config.productionTip = false
 
 Vue.prototype.$urls = urls
+firebase.initializeApp(config.firebase)
 
 /* eslint-disable no-new */
 new Vue({

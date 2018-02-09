@@ -24,9 +24,6 @@
 <script>
   import firebase from 'firebase'
   import firebaseui from 'firebaseui'
-  import { config } from '../config'
-
-  firebase.initializeApp(config.firebase)
 
   export default {
     name: 'auth',
