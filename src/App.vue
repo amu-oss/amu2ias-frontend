@@ -65,13 +65,13 @@
         drawer: false,
         fixed: false,
         items: [
-        { icon: 'dashboard', title: 'Home', action: 'home' },
-        { icon: 'grade', title: 'Hall of Fame', action: 'fame' },
-        { icon: 'rss_feed', title: 'Blog', action: 'blog' },
-        { icon: 'file_download', title: 'Downloads', action: 'downloads' },
-        { icon: 'chat', title: 'Chat', action: 'chat' },
-        { icon: 'account_circle', title: 'Account', action: 'account' },
-        { icon: 'info', title: 'About', action: 'about' }
+          { icon: 'dashboard', title: 'Home', action: 'home' },
+          { icon: 'grade', title: 'Hall of Fame', action: 'fame' },
+          { icon: 'rss_feed', title: 'Blog', action: 'blog' },
+          { icon: 'file_download', title: 'Downloads', action: 'downloads' },
+          { icon: 'chat', title: 'Chat', action: 'chat' },
+          { icon: 'account_circle', title: 'Account', action: 'account' },
+          { icon: 'info', title: 'About', action: 'about' }
         ],
         miniVariant: false
       }
