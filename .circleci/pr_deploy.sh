@@ -19,6 +19,7 @@ fi
 
 export DEPLOY_DOMAIN=https://pr-${ISSUE_NUMBER}-${CONTEXT}-${REPONAME}.surge.sh
 
+cp ./dist/index.html ./dist/200.html
 surge --project ./dist --domain $DEPLOY_DOMAIN
 
 curl --request POST "https://api.github.com/repos/amu-oss/amu2ias-frontend/issues/${ISSUE_NUMBER}/comments?access_token=${GH_TOKEN}" --data '{"body":"PR Successfully Deployed : '"${DEPLOY_DOMAIN}"'"}'

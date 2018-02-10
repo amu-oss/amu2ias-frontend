@@ -8,5 +8,6 @@ if [ ! -z "$CIRCLE_PR_USERNAME" -o "$CIRCLE_PROJECT_USERNAME" != "amu-oss" -o "$
     exit 0
 fi
 
+cp ./dist/index.html ./dist/200.html
 export SURGE_LOGIN=amu-oss@gmail.com
 surge --project ./dist --domain amu2ias.surge.sh
