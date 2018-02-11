@@ -3,4 +3,5 @@ import { config } from './config'
 
 require('firebase/firestore')
 
-export default firebase.initializeApp(config.firebase)
+firebase.initializeApp(config.firebase)
+export default firebase

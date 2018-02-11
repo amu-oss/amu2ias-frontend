@@ -35,8 +35,8 @@ export default new Router({
       component: Fame
     },
     {
-      path: '/account',
-      name: 'Account',
+      path: '/(account|profile)',
+      name: 'Profile',
       component: Account
     },
     {
