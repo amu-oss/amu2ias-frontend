@@ -34,11 +34,11 @@
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat v-if="!user" :key="'signin'" :to="'/signin'">
+        <v-btn flat v-if="!authenticated" :key="'signin'" :to="'/signin'">
           <v-icon left>lock</v-icon>
           Sign In
         </v-btn>
-        <v-btn flat v-if="user" :key="'signin'" @click="logout">
+        <v-btn flat v-else :key="'signin'" @click="logout">
           <v-icon left>lock_open</v-icon>
           Log Out
         </v-btn>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   export default {
     data () {
       return {
@@ -76,20 +78,15 @@
         miniVariant: false
       }
     },
+
     computed: {
-      user () {
-        return this.$store.state.auth.user
-      },
       title () {
         return this.$route.name
-      }
+      },
+      ...mapGetters('auth', ['authenticated'])
     },
 
-    methods: {
-      logout () {
-        this.$store.dispatch('auth/logout')
-      }
-    }
+    methods: mapActions('auth', ['logout'])
 
   }
 </script>

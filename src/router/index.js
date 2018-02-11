@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'AMU2IAS',
       component: Home
     },
     {
