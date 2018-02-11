@@ -1,10 +1,5 @@
-import firebase from '@/firebase'
-import { firebaseAction } from 'vuexfire'
-
-const auth = firebase.auth()
-const firestore = firebase.firestore()
-
-const getUserReference = user => firestore.collection('users').doc(user.uid)
+import getters from './getters'
+import actions from './actions'
 
 export default{
   namespaced: true,
@@ -14,57 +9,9 @@ export default{
     userData: null
   },
 
-  getters: {
-    // Add auth related getters
-    authenticated: state => state.user != null
-  },
+  getters,
 
-  actions: {
-    // Add auth related actions
-    setUser ({ commit, dispatch }, user) {
-      dispatch('fetchUserData', user)
-      dispatch('updateUserInformation', user)
-      commit('setUser', user)
-    },
-
-    async updateUserInformation (context, user) {
-      const reference = getUserReference(user)
-      const userData = await reference.get()
-      if (!userData.exists) {
-        // No user data is saved, meaning the user is logging in for the
-        // first time, let's save its data to firestore
-        const data = {
-          id: user.uid,
-          name: user.displayName,
-          avatar: user.photoURL,
-          email: user.email,
-          emailVerified: user.emailVerified,
-          phoneNumber: user.phoneNumber,
-          isAnonymous: user.isAnonymous,
-          roles: ['USER']
-        }
-
-        // Save the user data
-        reference.set(data)
-      }
-    },
-
-    clearUser ({ commit, dispatch }) {
-      dispatch('unbindUserData')
-      commit('clearUser')
-    },
-
-    fetchUserData: firebaseAction(({ bindFirebaseRef }, user) => {
-      bindFirebaseRef('userData', getUserReference(user))
-    }),
-
-    unbindUserData: firebaseAction(({ commit, unbindFirebaseRef }) => {
-      unbindFirebaseRef('userData')
-      commit('clearUserData')
-    }),
-
-    logout: () => auth.signOut()
-  },
+  actions,
 
   mutations: {
     setUser (state, user) {

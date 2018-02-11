@@ -3,6 +3,7 @@
     
     <v-navigation-drawer
       fixed
+      disable-route-watcher
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
@@ -38,10 +39,7 @@
           <v-icon left>lock</v-icon>
           Sign In
         </v-btn>
-        <v-btn flat v-else :key="'signin'" @click="logout">
-          <v-icon left>lock_open</v-icon>
-          Log Out
-        </v-btn>
+        <UserDropDown v-else />
       </v-toolbar-items>
     </v-toolbar>
 
@@ -58,9 +56,14 @@
 </template>
 
 <script>
+  import UserDropDown from './components/User/UserDropDown'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
+    components: {
+      UserDropDown
+    },
+
     data () {
       return {
         clipped: false,
