@@ -1,8 +1,13 @@
 <template>
   <v-container grid-list-lg>
   <v-layout row wrap>
-    <Blog v-for="blog in blogs" :blog="blog">
-    </Blog>
+    <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
+      <Blog v-for="blog in blogs" 
+        :blog="blog"
+        :key="blog.id"
+      >
+      </Blog>
+    </v-flex>
   </v-layout>
   </v-container>
 </template>

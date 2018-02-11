@@ -2,7 +2,7 @@ import firebase from '@/firebase'
 import { firebaseAction } from 'vuexfire'
 
 const firestore = firebase.firestore()
-const blogRefer = () => firestore.collection('blogs')
+const getBlogRef = () => firestore.collection('blogs')
 export default{
   namespaced: true,
   state: {
@@ -20,9 +20,9 @@ export default{
     // blog related actions
     fetchBlogs: ({ commit, dispatch }) => {
       commit('setBlogRef')
-      dispatch('setBlogs', blogRefer())
+      dispatch('fetchBlogsData', getBlogRef())
     },
-    setBlogs: firebaseAction(({ bindFirebaseRef }, blogsRef) => {
+    fetchBlogsData: firebaseAction(({ bindFirebaseRef }, blogsRef) => {
       bindFirebaseRef('blogs', blogsRef)
     })
   },
@@ -30,7 +30,7 @@ export default{
   mutations: {
     // blog related mutations
     setBlogRef: (state) => {
-      state.blogsRef = firestore.collection('blogs')
+      state.blogsRef = getBlogRef()
     }
   }
 }
