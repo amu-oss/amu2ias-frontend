@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
+import blog from './blog'
 import { firebaseMutations } from 'vuexfire'
 
 Vue.use(Vuex)
@@ -8,7 +9,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   namespaced: true,
   modules: {
-    auth
+    auth,
+    blog
   },
   state: {
     // Add global properties
