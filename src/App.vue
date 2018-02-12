@@ -10,10 +10,11 @@
       light
       app
     >
-      <v-toolbar flat>
+      <v-toolbar flat dark>
       <v-list>
         <v-list-tile>
-          <v-list-tile-title class="title">
+          <v-list-tile-title 
+          class="title white--text">
             Menu
           </v-list-tile-title>
         </v-list-tile>
@@ -21,8 +22,8 @@
     </v-toolbar>
     <v-divider></v-divider>
     <v-list dense class="pt-0">
-      <v-list-tile v-for="item in items" :key="item.title" router v-bind:to="item.action">
-          <v-icon>{{ item.icon }}</v-icon>
+      <v-list-tile v-for="item in items" :key="item.title" router v-bind:to="item.action" >
+          <v-icon class="blue--text">{{ item.icon }}</v-icon>
         <v-list-tile-content>
           <v-list-tile-title> &nbsp; {{ item.title }}</v-list-tile-title>
         </v-list-tile-content>
@@ -30,7 +31,7 @@
     </v-list>
     </v-navigation-drawer>
 
-    <v-toolbar fixed app :clipped-left="clipped">
+    <v-toolbar fixed app :clipped-left="clipped" class="blue lighten-1" dark>
       <v-toolbar-side-icon @click.stop="drawer = !drawer" light></v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
