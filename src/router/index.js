@@ -5,7 +5,7 @@ import Chat from '@/components/Chat'
 import About from '@/components/About'
 import Fame from '@/components/Fame'
 import Account from '@/components/Account'
-import Blog from '@/components/Blog'
+import Blogs from '@/components/Blogs/Blogs'
 import Downloads from '@/components/Downloads'
 import Signin from '@/components/Signin'
 
@@ -40,9 +40,9 @@ export default new Router({
       component: Account
     },
     {
-      path: '/blog',
-      name: 'Blog',
-      component: Blog
+      path: '/blogs',
+      name: 'Blogs',
+      component: Blogs
     },
     {
       path: '/downloads',

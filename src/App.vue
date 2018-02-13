@@ -72,7 +72,7 @@
         items: [
           { icon: 'dashboard', title: 'Home', action: 'home' },
           { icon: 'grade', title: 'Hall of Fame', action: 'fame' },
-          { icon: 'rss_feed', title: 'Blog', action: 'blog' },
+          { icon: 'rss_feed', title: 'Blogs', action: 'blogs' },
           { icon: 'file_download', title: 'Downloads', action: 'downloads' },
           { icon: 'chat', title: 'Chat', action: 'chat' },
           { icon: 'account_circle', title: 'Account', action: 'account' },
