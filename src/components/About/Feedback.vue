@@ -8,11 +8,6 @@
         {{ feedback.description }}
         <v-form v-model="valid" ref="form" lazy-validation>
           <v-text-field
-            label="Name"
-            v-model="name"
-          >
-          </v-text-field>
-          <v-text-field
             label="Feedback"
             v-model="feedbackModel"
             :rules="feedbackRules"
@@ -43,8 +38,6 @@
     props: ['feedback'],
     data: () => ({
       valid: false,
-      name: '',
-
       feedbackModel: '',
       feedbackRules: [
         (v) => !!v || 'Feedback is required'
