@@ -1,13 +1,13 @@
 <template>
-  <v-flex d-flex xs12 sm6 md4>
-    <v-card class="elevation-0 transparent">
+  <v-flex d-flex>
+    <v-card class="blue-grey darken-2 white--text">
       <v-card-title primary-title>
         <div class="headline">{{ contact.title }}</div>
       </v-card-title>
       <v-card-text>
         {{ contact.description }}
       </v-card-text>
-      <v-list class="transparent">
+      <v-list class="transparent" dark>
         <v-list-tile>
           <v-list-tile-action>
             <v-icon class="blue--text text--lighten-2">phone</v-icon>

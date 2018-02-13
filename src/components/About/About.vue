@@ -3,8 +3,6 @@
     <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
       <TitleCards :aboutData="aboutData"></TitleCards>
 
-      <Developers :developers="aboutData.developers"></Developers>
-
       <v-container grid-list-md>
         <v-layout row wrap  justify-space-around>
 
@@ -14,6 +12,8 @@
         
         </v-layout>
       </v-container>
+
+      <Developers :developers="aboutData.developers"></Developers>
 
     </v-flex>
   </v-container>

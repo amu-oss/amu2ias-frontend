@@ -13,9 +13,9 @@
         </v-card>
       </v-flex>
       <v-flex d-flex xs12 sm4 md4>
-        <v-card raised>
+        <v-card class="grey lighten-3" raised>
           <v-card-media :src="logo_url" height="250px" contain></v-card-media>
-          <v-card-text class="subheading grey--text">{{ aboutData.caption }}</v-card-text>
+          <v-card-text class="subheading grey--text text--darken-4">{{ aboutData.caption }}</v-card-text>
         </v-card>
       </v-flex>
     </v-layout>

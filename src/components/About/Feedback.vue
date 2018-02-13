@@ -1,6 +1,6 @@
 <template>
-  <v-flex d-flex xs12 sm6 md4 >
-    <v-card class="elevation-0 transparent">
+  <v-flex d-flex>
+    <v-card class="elevation-1">
       <v-card-title primary-title>
         <div class="headline">{{ feedback.title }}</div>
       </v-card-title>
@@ -9,11 +9,12 @@
         <v-form v-model="valid" ref="form" lazy-validation>
           <v-text-field
             label="Feedback"
-            v-model="feedbackModel"
+            v-model="feedbackText"
             :rules="feedbackRules"
             required
           >
           </v-text-field>
+          <v-progress-circular v-if="sending" indeterminate color="purple"></v-progress-circular>
           <v-btn
             @click="submit"
             :disabled="!valid"
@@ -30,6 +31,15 @@
         </v-form>
       </v-card-text>
     </v-card>
+    <v-snackbar
+      bottom
+      right
+      left
+      v-model="snackbar"
+    >
+      {{ snackbarText }}
+      <v-btn flat color="pink" @click.native="snackbar = false">Close</v-btn>
+    </v-snackbar>
   </v-flex>
 </template>
 
@@ -37,8 +47,11 @@
   export default {
     props: ['feedback'],
     data: () => ({
+      snackbar: false,
+      snackbarText: 'Sent Feedback',
+      sending: false,
       valid: false,
-      feedbackModel: '',
+      feedbackText: '',
       feedbackRules: [
         (v) => !!v || 'Feedback is required'
       ]
@@ -47,8 +60,19 @@
     methods: {
       submit () {
         if (this.$refs.form.validate()) {
-          // Native form submission is not yet supported
-          this.$refs.form.reset()
+          this.sending = true
+          this.$store.dispatch('about/sendFeedback', this.feedbackText)
+            .then(() => {
+              this.snackbarText = 'Sent Feedback Successfully'
+              this.sending = false
+              this.snackbar = true
+              this.$refs.form.reset()
+            }).catch(error => {
+              console.log(error)
+              this.snackbarText = 'Error Sending Feedback'
+              this.sending = false
+              this.snackbar = true
+            })
         }
       },
       clear () {
