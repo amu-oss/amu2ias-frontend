@@ -12,6 +12,11 @@ export default{
   actions: {
     fetchData: firebaseAction(({ bindFirebaseRef }) => {
       bindFirebaseRef('fameData', fameRef)
-    })
+    }),
+    createFame: ({ commit }, fameContent) => {
+      return firestore.collection('fame').doc().set({
+        fameContent
+      })
+    }
   }
 }

@@ -1,6 +1,12 @@
 <template>
   <v-container>
     <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
+      <v-layout row justify-left>
+        <v-btn color="red" dark fab v-if="isEditor" @click="showCreateDialog = true" >
+          <v-icon>add</v-icon>
+        </v-btn>
+      </v-layout>
+      <CreateFame :showDialog="showCreateDialog" v-on:close="showCreateDialog = false"></CreateFame>
       <v-container grid-list-md>
         <v-layout row wrap  justify-space-around>
             <FameCard v-for="dude in fameData" :dude="dude"
@@ -12,18 +18,25 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import FameCard from './FameCard'
+import CreateFame from './CreateFame'
 
 export default {
   components: {
-    FameCard
+    FameCard,
+    CreateFame
   },
   methods: mapActions('fame', ['fetchData']),
-  computed: mapState('fame', ['fameData']),
+
+  computed: {
+    ...mapState('fame', ['fameData']),
+    ...mapGetters('auth', ['isEditor'])
+  },
   data () {
     return {
-      logo_url: this.$urls.staticUrls.blog
+      logo_url: this.$urls.staticUrls.blog,
+      showCreateDialog: false
     }
   },
   created () {
