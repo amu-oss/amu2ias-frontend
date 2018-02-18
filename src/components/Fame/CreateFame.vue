@@ -1,38 +1,63 @@
 <template>
   <v-layout row justify-center>
-      <v-dialog persistent v-model="showDialog" max-width="500px">
-        <v-card>
-          <v-card-title>
-            <span class="headline">Create Entry</span>
-          </v-card-title>
-          <v-card-text>
-            <v-form ref="fameForm" v-model="valid" lazy-validation>
-              <v-text-field label="Name" v-model="fameContent.name" :rules="rules" prepend-icon="person_pin" required></v-text-field>
-              <v-btn 
-                raised 
-                class="blue lighten-2" 
-                @click="onPickFile"
-                >Upload Image</v-btn>
-              <input 
-                type="file" 
-                style="display: none" 
-                ref="imageInput" 
-                accept="image/*"
-                @change="onFilePicked">
-              <img :src="imageURL" style="width:100%; max-width:600px;">
-              <v-text-field label="All India Rank" v-model="fameContent.air" :rules="rules" prepend-icon="stars" required></v-text-field>
-              <v-text-field label="Stream (IES/IAS/IPS/other)" :rules="rules" v-model="fameContent.stream" prepend-icon="description" required></v-text-field>
-              <v-text-field label="Year" prepend-icon="date_range"  :rules="rules" v-model="fameContent.year" required></v-text-field>
-
-              <small>*indicates required field</small>
-           </v-form>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn class="blue--text darken-1" flat  @click="$emit('close')">Close</v-btn>
-            <v-btn class="blue--text darken-1" flat  @click="send">Send</v-btn>
-          </v-card-actions>
-        </v-card>
+    <v-dialog persistent v-model="showDialog" max-width="500px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Create Entry</span>
+        </v-card-title>
+        <v-card-text>
+          <v-form 
+            ref="fameForm"
+            v-model="valid" 
+            lazy-validation
+          >
+            <v-text-field 
+              label="Name" 
+              v-model="famePayload.name" 
+              :rules="rules" 
+              prepend-icon="person_pin" 
+              required></v-text-field>
+            <v-btn 
+              raised 
+              class="blue lighten-2" 
+              @click="onPickFile"
+            >Upload Image</v-btn>
+            <input 
+              type="file" 
+              style="display: none" 
+              ref="imageInput" 
+              accept="image/*"
+              @change="onFilePicked">
+            <img :src="imageURL" style="width:100%; max-width:600px;">
+            <v-text-field 
+              label="All India Rank" 
+              v-model="famePayload.air" 
+              :rules="rules" 
+              prepend-icon="stars" 
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Stream (IES/IAS/IPS/other)" 
+              v-model="famePayload.stream" 
+              :rules="rules" 
+              prepend-icon="description"
+              required></v-text-field>
+            <v-text-field 
+              label="Year"
+              v-model="famePayload.year" 
+              :rules="rules" 
+              prepend-icon="date_range"  
+              required
+            ></v-text-field>
+            <small>*indicates required field</small>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn class="blue--text darken-1" flat  @click="$emit('close')">Close</v-btn>
+          <v-btn class="blue--text darken-1" flat  @click="send">Send</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-dialog>
     <v-snackbar
       bottom
@@ -54,7 +79,7 @@
       snackbar: false,
       snackbarText: 'New Hall of Fame entry added!',
       imageURL: '',
-      fameContent: {
+      famePayload: {
         name: '',
         air: '',
         stream: '',
@@ -81,13 +106,13 @@
           this.imageURL = fileReader.result
         })
         fileReader.readAsDataURL(files[0])
-        this.fameContent.image = files[0]
+        this.famePayload.image = files[0]
       },
 
       send () {
         if (this.$refs.fameForm.validate()) {
-          console.log('fameContent')
-          this.$store.dispatch('fame/createFame', this.fameContent)
+          console.log('famePayload')
+          this.$store.dispatch('fame/createFame', this.famePayload)
             .then(() => {
               this.snackbarText = 'New Hall of Fame entry added!'
               this.snackbar = true

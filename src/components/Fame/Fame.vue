@@ -18,36 +18,39 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
-import FameCard from './FameCard'
-import CreateFame from './CreateFame'
+  import { mapState, mapActions, mapGetters } from 'vuex'
+  import FameCard from './FameCard'
+  import CreateFame from './CreateFame'
 
-export default {
-  components: {
-    FameCard,
-    CreateFame
-  },
-  methods: mapActions('fame', ['fetchData']),
+  export default {
+    components: {
+      FameCard,
+      CreateFame
+    },
+    methods: mapActions('fame', ['fetchData']),
 
-  computed: {
-    ...mapState('fame', ['fameData']),
-    ...mapGetters('auth', ['isEditor'])
-  },
-  data () {
-    return {
-      logo_url: this.$urls.staticUrls.blog,
-      showCreateDialog: false
-    }
-  },
-  created () {
-    this.fetchData()
-  },
-  head: {
-    title () {
+    computed: {
+      ...mapState('fame', ['fameData']),
+      ...mapGetters('auth', ['isEditor'])
+    },
+
+    data () {
       return {
-        inner: this.$route.name
+        logo_url: this.$urls.staticUrls.blog,
+        showCreateDialog: false
+      }
+    },
+
+    created () {
+      this.fetchData()
+    },
+
+    head: {
+      title () {
+        return {
+          inner: this.$route.name
+        }
       }
     }
   }
-}
 </script>
