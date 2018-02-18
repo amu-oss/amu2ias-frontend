@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-      <v-layout row justify-left>
-        <v-btn color="red" dark fab v-if="isEditor" @click="showCreateDialog = true" >
-          <v-icon>add</v-icon>
+      <v-layout row>
+        <v-btn color="pink" dark block v-if="isEditor" @click="showCreateDialog = true" >
+          Add Hall Of Fame Entry
         </v-btn>
       </v-layout>
       <CreateFame :showDialog="showCreateDialog" v-on:close="showCreateDialog = false"></CreateFame>
       <v-container grid-list-md>
-        <v-layout row wrap  justify-space-around>
+        <v-layout row wrap>
             <FameCard v-for="dude in fameData" :dude="dude"
           :key="dude.id"></FameCard>
         </v-layout>

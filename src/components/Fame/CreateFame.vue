@@ -1,15 +1,25 @@
 <template>
   <v-layout row justify-center>
-      <div>Hello World</div>
       <v-dialog persistent v-model="showDialog" max-width="500px">
         <v-card>
           <v-card-title>
-            <span class="headline">Send Notification</span>
+            <span class="headline">Create Entry</span>
           </v-card-title>
           <v-card-text>
             <v-form ref="fameForm" v-model="valid" lazy-validation>
               <v-text-field label="Name" v-model="fameContent.name" :rules="rules" prepend-icon="person_pin" required></v-text-field>
-              <v-text-field label="Image URL" v-model="fameContent.imageURL" :rules="rules" prepend-icon="stars" required></v-text-field>
+              <v-btn 
+                raised 
+                class="blue lighten-2" 
+                @click="onPickFile"
+                >Upload Image</v-btn>
+              <input 
+                type="file" 
+                style="display: none" 
+                ref="imageInput" 
+                accept="image/*"
+                @change="onFilePicked">
+              <img :src="imageURL" style="width:100%; max-width:600px;">
               <v-text-field label="All India Rank" v-model="fameContent.air" :rules="rules" prepend-icon="stars" required></v-text-field>
               <v-text-field label="Stream (IES/IAS/IPS/other)" :rules="rules" v-model="fameContent.stream" prepend-icon="description" required></v-text-field>
               <v-text-field label="Year" prepend-icon="date_range"  :rules="rules" v-model="fameContent.year" required></v-text-field>
@@ -43,26 +53,46 @@
       valid: true,
       snackbar: false,
       snackbarText: 'New Hall of Fame entry added!',
+      imageURL: '',
       fameContent: {
         name: '',
         air: '',
-        imageURL: '',
         stream: '',
-        year: ''
+        year: '',
+        image: null
       },
       rules: [
         (v) => !!v || 'This is a required field'
       ]
     }),
     methods: {
+      onPickFile () {
+        this.$refs.imageInput.click()
+      },
+
+      onFilePicked (event) {
+        const files = event.target.files
+        let filename = files[0].name
+        if (filename.lastIndexOf('.') <= 0) {
+          return alert('Please upload a valid image!')
+        }
+        const fileReader = new FileReader()
+        fileReader.addEventListener('load', () => {
+          this.imageURL = fileReader.result
+        })
+        fileReader.readAsDataURL(files[0])
+        this.fameContent.image = files[0]
+      },
+
       send () {
         if (this.$refs.fameForm.validate()) {
-          console.log(this.fameContent)
+          console.log('fameContent')
           this.$store.dispatch('fame/createFame', this.fameContent)
             .then(() => {
               this.snackbarText = 'New Hall of Fame entry added!'
               this.snackbar = true
               this.$refs.fameForm.reset()
+              this.$emit('close')
             }).catch(error => {
               console.log(error)
               this.snackbarText = 'Error uploading data!'
