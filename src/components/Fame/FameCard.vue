@@ -1,6 +1,9 @@
 <template>
   <v-flex d-flex xs12 sm6 md6 lg4>
     <v-card raised class="text-xs-center">
+    <v-flex d-flex xs12 >
+  <DeleteFame :deleteFame="deleteFame" :dude="dude" v-on:cancel-delete="deleteFame = false" />
+</v-flex>
         <v-flex d-flex xs12 >
           <v-icon large color="amber">stars</v-icon>
         </v-flex>
@@ -17,12 +20,31 @@
           <div class="subheading grey--text">CSE {{dude.fameContent.year}} ({{dude.fameContent.stream}})</div><br>
           <div class="subheading">Some Links for the dude</div><br>
         </v-flex>
+        <v-flex>
+        <v-btn class="grey darken-2" v-if="isEditor" dark block bottom @click="deleteEntry">
+          Delete Entry
+        </v-btn>
+        </v-flex>
     </v-card>
   </v-flex>
 </template>
 
 <script>
+  import DeleteFame from './DeleteFame'
+  import {mapGetters} from 'vuex'
   export default {
-    props: ['dude']
+    components: {
+      DeleteFame
+    },
+    computed: mapGetters('auth', ['isEditor']),
+    props: ['dude'],
+    data: () => ({
+      deleteFame: false
+    }),
+    methods: {
+      deleteEntry () {
+        this.deleteFame = true
+      }
+    }
   }
 </script>

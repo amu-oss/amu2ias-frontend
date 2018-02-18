@@ -13,6 +13,7 @@ export default{
     fetchData: firebaseAction(({ bindFirebaseRef }) => {
       bindFirebaseRef('fameData', fameRef)
     }),
+
     createFame: ({ commit }, famePayload) => {
       const fameContent = {
         name: famePayload.name,
@@ -22,6 +23,7 @@ export default{
       }
       let imageURL
       let key
+      let imageRef
       console.log(famePayload.image.name)
       firestore.collection('fame').add({
         fameContent
@@ -31,13 +33,26 @@ export default{
       }).then((key) => {
         const imageName = famePayload.image.name
         const ext = imageName.slice(imageName.lastIndexOf('.'))
-        return firebase.storage().ref('fame/' + key + '.' + ext).put(famePayload.image)
+        imageRef = key + ext
+        return firebase.storage().ref('fame/' + key + ext).put(famePayload.image)
       }).then(fileData => {
         imageURL = fileData.metadata.downloadURLs[0]
-        return fameRef.doc(key).update({imageURL: imageURL})
+        return fameRef.doc(key).update({
+          imageURL: imageURL,
+          imageRef: imageRef
+        })
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+
+    removeFame: ({commit}, dude) => {
+      firebase.storage().ref('fame/' + dude.imageRef).delete().then(() => {
+        fameRef.doc(dude.id).delete()
       }).catch((error) => {
         console.log(error)
       })
     }
+
   }
 }
