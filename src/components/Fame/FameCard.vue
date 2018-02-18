@@ -21,7 +21,7 @@
           <div class="subheading">Some Links for the dude</div><br>
         </v-flex>
         <v-flex>
-        <v-btn class="grey darken-2" v-if="isEditor" dark block bottom @click="deleteEntry">
+        <v-btn class="grey darken-2" v-if="isAdmin" dark block bottom @click="deleteEntry">
           Delete Entry
         </v-btn>
         </v-flex>
@@ -36,7 +36,7 @@
     components: {
       DeleteFame
     },
-    computed: mapGetters('auth', ['isEditor']),
+    computed: mapGetters('auth', ['isAdmin']),
     props: ['dude'],
     data: () => ({
       deleteFame: false

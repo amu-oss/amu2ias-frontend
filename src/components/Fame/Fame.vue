@@ -2,7 +2,7 @@
   <v-container>
     <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
       <v-layout row>
-        <v-btn color="pink" dark block v-if="isEditor" @click="showCreateDialog = true" >
+        <v-btn color="pink" dark block v-if="isAdmin" @click="showCreateDialog = true" >
           Add Hall Of Fame Entry
         </v-btn>
       </v-layout>
@@ -31,7 +31,7 @@
 
     computed: {
       ...mapState('fame', ['fameData']),
-      ...mapGetters('auth', ['isEditor'])
+      ...mapGetters('auth', ['isAdmin'])
     },
 
     data () {
