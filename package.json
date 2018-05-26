@@ -15,7 +15,7 @@
     "format": "standard --fix"
   },
   "dependencies": {
-    "firebase": "^4.9.1",
+    "firebase": "^5.0.2",
     "firebaseui": "^2.5.1",
     "firestore": "^1.1.6",
     "moment": "^2.20.1",
