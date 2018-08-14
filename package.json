@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "firebase": "^5.0.2",
-    "firebaseui": "^2.5.1",
+    "firebaseui": "^3.3.0",
     "firestore": "^1.1.6",
     "moment": "^2.20.1",
     "vue": "^2.3.3",
